@@ -1,0 +1,11 @@
+I:\Programming\Windows Dev\NylasApp\NylasApp\bin\Debug\NylasApp.dll
+I:\Programming\Windows Dev\NylasApp\NylasApp\bin\Debug\NylasApp.pdb
+I:\Programming\Windows Dev\NylasApp\NylasApp\bin\Debug\NylasApp.xml
+I:\Programming\Windows Dev\NylasApp\NylasApp\bin\Debug\Newtonsoft.Json.dll
+I:\Programming\Windows Dev\NylasApp\NylasApp\bin\Debug\Newtonsoft.Json.xml
+I:\Programming\Windows Dev\NylasApp\NylasApp\obj\Debug\NylasApp.vbprojResolveAssemblyReference.cache
+I:\Programming\Windows Dev\NylasApp\NylasApp\obj\Debug\NylasApp.Resources.resources
+I:\Programming\Windows Dev\NylasApp\NylasApp\obj\Debug\NylasApp.vbproj.GenerateResource.Cache
+I:\Programming\Windows Dev\NylasApp\NylasApp\obj\Debug\NylasApp.dll
+I:\Programming\Windows Dev\NylasApp\NylasApp\obj\Debug\NylasApp.xml
+I:\Programming\Windows Dev\NylasApp\NylasApp\obj\Debug\NylasApp.pdb

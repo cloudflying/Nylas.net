@@ -1,0 +1,54 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+NylasApp
+</name>
+</assembly>
+<members>
+<member name="M:NylasApp.nylas.oauthRedirect(System.String)">
+ <summary>
+ Generates redirect url for OAuth.
+ </summary>
+ <param name="login_hint">Optional, Email address of user.</param>
+ <returns>String, Redirect user to this url.</returns>
+</member>
+<member name="M:NylasApp.nylas.retrieveAllMessages(System.String,System.String)">
+ <summary>
+ Retrieves all messages from Nylas Server. API Call /messages
+ </summary>
+ <param name="token">Required, OAuth Token for User</param>
+ <param name="filters">Optional, Filters parameters (Querystring values)</param>
+ <returns></returns>
+</member>
+<member name="M:NylasApp.nylas.retrieveSingleMessage(System.String,System.String)">
+ <summary>
+ Retrieves a single message. API Call /messages/:id
+ </summary>
+ <param name="token">Required, OAuth Token for User</param>
+ <param name="messageID">Required, Message ID</param>
+ <returns></returns>
+</member>
+<member name="T:NylasApp.oauthTokenCode">
+ <summary>
+ Generated for oauth flow retrieval.
+ </summary>
+</member>
+<member name="T:NylasApp.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:NylasApp.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:NylasApp.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+</members>
+</doc>

@@ -3,11 +3,11 @@
 **Initial Setup**
 
 1.    Reference the Nylas.net Library    
-	     `Imports NylasApp`
+	     `Imports NylasApp` 
 2.    Setup API properties    
-	`nylas.nylasClientID = "<YOUR NYLAS CLIENT ID>" `
-        `nylas.nylasClientSecret = "<YOUR NYLAS CLIENT SECRET>" `
-        `nylas.redirectAddress = "<OAUTH REDIRECT URL - MAKE SURE THIS MATCHES ENTRY ON NYLAS DASHBOARD>" `
+	`nylas.nylasClientID = "<YOUR NYLAS CLIENT ID>" `   
+        `nylas.nylasClientSecret = "<YOUR NYLAS CLIENT SECRET>" `   
+        `nylas.redirectAddress = "<OAUTH REDIRECT URL - MAKE SURE THIS MATCHES ENTRY ON NYLAS DASHBOARD>" `  
 3.    Call OAuth Flow first.   
 
 
@@ -15,12 +15,14 @@
 **OAuth Flow**   
 
 Initial Page   
+
     response.redirect(nylas.oauthredirect)
     '// Include User Email Address if you know it.
     response.redirect(nylas.oauthredirect("john@doe.net"))
 
 
-Redirect Page
+Redirect Page  
+
      '// Exchange OAuth Code for Token - Store this token for all future requests.
      Dim token As String = nylas.oauthTokenExchange(Request.QueryString("code"))
 

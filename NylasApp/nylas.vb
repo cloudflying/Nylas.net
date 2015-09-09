@@ -18,7 +18,7 @@ Public Class nylas
     ''' </summary>
     ''' <param name="login_hint">Optional, Email address of user.</param>
     ''' <returns>String, Redirect user to this url.</returns>
-    Public Function oauthRedirect(Optional login_hint As String = "") As String
+    Public Shared Function oauthRedirect(Optional login_hint As String = "") As String
         chkParams()
         If Len(redirectAddress) < 1 Then
             Throw New ApplicationException("102 - No Redirect URI Specified.")
@@ -35,7 +35,7 @@ Public Class nylas
         End Try
     End Function
 
-    Public Function oauthTokenExchange(code As String) As String
+    Public Shared Function oauthTokenExchange(code As String) As String
         chkParams()
         Dim codeExchange As New oauthTokenCode
         Try
@@ -71,7 +71,7 @@ Public Class nylas
     ''' <param name="token">Required, OAuth Token for User</param>
     ''' <param name="filters">Optional, Filters parameters (Querystring values)</param>
     ''' <returns></returns>
-    Public Function retrieveAllMessages(token As String, Optional filters As String = "") As List(Of messageObject)
+    Public Shared Function retrieveAllMessages(token As String, Optional filters As String = "") As List(Of messageObject)
         chkParams()
         Dim returnList As New List(Of messageObject)
         Try
@@ -92,7 +92,7 @@ Public Class nylas
     ''' <param name="token">Required, OAuth Token for User</param>
     ''' <param name="messageID">Required, Message ID</param>
     ''' <returns></returns>
-    Public Function retrieveSingleMessage(token As String, messageID As String) As messageObject
+    Public Shared Function retrieveSingleMessage(token As String, messageID As String) As messageObject
         chkParams()
         Dim returnMessage As messageObject
         Try
@@ -106,7 +106,7 @@ Public Class nylas
 #End Region
 
 #Region "Threads"
-    Public Function retrieveAllThreads(token As String, Optional filters As String = "") As List(Of threadObject)
+    Public Shared Function retrieveAllThreads(token As String, Optional filters As String = "") As List(Of threadObject)
         chkParams()
         Dim returnThread As New List(Of threadObject)
         Try
@@ -120,7 +120,7 @@ Public Class nylas
 #End Region
 
 #Region "Account"
-    Public Function retrieveAccount(token As String) As accountObject
+    Public Shared Function retrieveAccount(token As String) As accountObject
         chkParams()
         Try
             retrieveAccount = JsonConvert.DeserializeObject(Of accountObject)(requestGET(nylasAPIaddress & "/account", token))
@@ -133,14 +133,14 @@ Public Class nylas
 
 #Region "Helper Functions - Do Not Edit Below Here"
 
-    Public Function convertDate(unixTime As Double) As DateTime
+    Public Shared Function convertDate(unixTime As Double) As DateTime
 
         Dim dtDateTime As DateTime = New DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc)
         dtDateTime = dtDateTime.AddSeconds(unixTime).ToLocalTime
         Return dtDateTime
     End Function
 
-    Private Function chkParams() As Boolean
+    Private Shared Function chkParams() As Boolean
         If Len(nylasClientID) < 1 Then
             Throw New ApplicationException("100 - No Client ID Specified.")
         End If
@@ -153,7 +153,7 @@ Public Class nylas
 
 
 #Region "HTTP Requests"
-    Private Function requestGET(url As String, Optional token As String = "") As String
+    Private Shared Function requestGET(url As String, Optional token As String = "") As String
         Dim request As HttpWebRequest = HttpWebRequest.Create(url)
         If Len(token) > 0 Then
             request.Headers.Add("AUTHORIZATION", "Basic " & Convert.ToBase64String(Encoding.UTF8.GetBytes((token & ":").ToCharArray())))
@@ -184,7 +184,7 @@ Public Class nylas
 #End Region
 
 #Region "HTML to Plain Text"
-    Public Function HTMLToText(ByVal HTMLCode As String, Optional newLineSeparator As String = vbNewLine) As String
+    Public Shared Function HTMLToText(ByVal HTMLCode As String, Optional newLineSeparator As String = vbNewLine) As String
         HTMLCode = HTMLCode.Replace("\n", newLineSeparator)
         HTMLCode = HTMLCode.Replace("\t", " ")
         HTMLCode = Regex.Replace(HTMLCode, "\\s+", "  ")

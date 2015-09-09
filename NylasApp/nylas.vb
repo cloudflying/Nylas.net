@@ -49,7 +49,7 @@ Public Class nylas
 
             codeExchange = JsonConvert.DeserializeObject(Of oauthTokenCode)(requestGET(urlBuilder.ToString))
         Catch ex As Exception
-
+            Throw New ApplicationException("Error 504 - Unable to get token : " & ex.Message, ex)
         End Try
 
 

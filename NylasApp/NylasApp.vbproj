@@ -68,6 +68,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="jsonClass\count.vb" />
+    <Compile Include="jsonClass\folderObject.vb" />
     <Compile Include="nylas.vb" />
     <Compile Include="jsonClass\accountObject.vb" />
     <Compile Include="jsonClass\messageObject.vb" />

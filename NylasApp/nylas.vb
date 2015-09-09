@@ -103,6 +103,29 @@ Public Class nylas
 
         Return returnMessage
     End Function
+
+
+
+    Public Shared Function retrieveMessageCount(token As String, Optional filters As String = "") As Integer
+        chkParams()
+        Dim counted As New count
+        Try
+            If Len(filters) > 0 Then
+                filters = "?view=count&" & filters
+            Else
+                filters = "?view=count"
+            End If
+
+
+
+            counted = JsonConvert.DeserializeObject(Of count)(requestGET(nylasAPIaddress & "/messages" & filters, token))
+        Catch ex As Exception
+            Throw New ApplicationException("602 - Unable to count records, please try again. " & vbNewLine & ex.Message, ex)
+        End Try
+
+        Return counted.count
+
+    End Function
 #End Region
 
 #Region "Threads"
@@ -116,6 +139,24 @@ Public Class nylas
             Throw New ApplicationException("630 - Unable to gather thread list from Nylas. " & vbNewLine & ex.Message, ex)
         End Try
         Return returnThread
+    End Function
+#End Region
+
+#Region "Folders"
+
+    Public Shared Function retrieveFolderList(token As String, Optional filters As String = "") As List(Of folderObject)
+        chkParams()
+        Dim returnList As New List(Of folderObject)
+        Try
+
+            If Len(filters) > 1 Then filters = "?" & filters
+
+            returnList = JsonConvert.DeserializeObject(Of List(Of folderObject))(requestGET(nylasAPIaddress & "/folders" & filters, token))
+        Catch ex As Exception
+            Throw New ApplicationException("630 - Unable to gather folder list from Nylas. " & vbNewLine & ex.Message, ex)
+        End Try
+
+        Return returnList
     End Function
 #End Region
 

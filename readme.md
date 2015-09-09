@@ -1,4 +1,4 @@
-﻿#Nylas .net class library
+#Nylas .net class library
 
 **Initial Setup**
 
